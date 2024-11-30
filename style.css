@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -6,56 +5,38 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family:Helvetica;
   line-height: 1.6;
   color: #333;
 }
 #heading1{
-  font-size: 3.5rem;
+  font-size: 2.8rem;
   font-family: Montserrat;
-  
 }
-.hero {
-  height: 100vh;
-  background-image: url('https://i.postimg.cc/zXd49g86/Cyan-And-Blue-Colorful-Illustrative-Coding-You-Tube-Thumbnail-1.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: white;
-  margin-bottom: 20px;
+/* Video Styles */
+.video {
+  width: 100%; /* Ensure the video takes up the full width of the container */
+  height: auto; /* Adjust the height automatically based on the width to maintain aspect ratio */
+  object-fit: cover; /* Cover ensures the video fills the container while maintaining aspect ratio */
+  margin: 0; /* Remove any margin */
 }
 
-.hero::before {
-  content: '';
+.hero-video-wrapper {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 1;
-  max-width: 90%;
-  padding: 1rem;
-  font-family:Helvetica ;
-}
-
-.hero-content h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  animation: fadeInUp 1s ease-out;
-}
-
-.hero-content p {
-  font-size: 1.5rem;
-  animation: fadeInUp 1s ease-out;
+.hero {
+  position: relative;
+  height: 100vh; 
+  overflow: hidden;
+  background-color: white;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
 }
 
 .print-resume-btn {
@@ -63,14 +44,17 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 1rem;
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
   font-weight: 600;
   padding: 0.8rem 1.5rem;
   border-radius: 50px;
   text-decoration: none;
   transition: background-color 0.3s, transform 0.2s;
-  margin-top: 1.5rem;
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-family: Helvetica;
 }
@@ -81,13 +65,77 @@ body {
 }
 
 .print-resume-btn:hover {
-  background-color: black;
-  color: white;
-  transform: scale(1.05);
+  background-color: white;
+  color: black;
 }
 
 .print-resume-btn:active {
   transform: scale(1);
+}
+
+@media (max-width: 480px) {
+  .hero {
+    height: 50vh;
+  }
+
+  .video {
+    width: 100%; 
+    margin-top: 2rem;
+    margin-bottom: 0; 
+  }
+
+  .print-resume-btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+    bottom: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh; 
+  }
+
+  .video {
+    width: 100%;
+    margin-top: 6rem;
+    margin-bottom: 0; 
+  }
+
+  .print-resume-btn {
+    font-size: 1rem;
+    bottom: 6.5rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    height: 50vh;
+  }
+
+  .video {
+    width: 100%; 
+    margin-top: 3rem;
+    margin-bottom: 0; 
+  }
+
+  .print-resume-btn {
+    font-size: 1.1rem;
+    padding: 0.9rem 1.3rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .hero {
+    height: 100vh;
+  }
+
+  .video {
+    width: 100%; 
+    margin-top: 3rem;
+    margin-bottom: 0; 
+  }
 }
 
 @keyframes fadeInUp {
@@ -129,6 +177,8 @@ body {
     font-weight: bold;
     font-family: Helvetica;
     color: black;
+    text-decoration: none;
+  
    }
    
    .nav-menu {
@@ -177,7 +227,8 @@ body {
     display: none; 
   }
   .project-image-slider .imagesprofile img{
-    border-radius: 70%;
+    
+    margin-top: 3rem;
     width: 100%;
   }
   
@@ -385,38 +436,7 @@ body {
     }
   }
    
-.print-resume-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    background-color: white;
-    color: black;
-    font-weight: 600;
-    padding: 0.8rem 1.5rem;
-    border-radius: 50px;
-    text-decoration: none;
-    transition: background-color 0.3s, transform 0.2s;
-    margin-top: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .print-resume-btn i {
-    margin-right: 0.5rem;
-    font-size: 1rem;
-  }
-  
-  .print-resume-btn:hover {
-    background-color: black;
-    color: white; 
-    transform: scale(1.05);
-  }
-  
-  .print-resume-btn:active {
-    transform: scale(1);
-  }
-  
-  
+ 
   
 footer {
     background-color: white;
@@ -472,7 +492,7 @@ footer {
     color: black;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   
   .footer-links ul li a:hover {

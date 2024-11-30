@@ -1,148 +1,116 @@
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.querySelector('.nav-menu');
-
-navToggle.addEventListener('click', () => {
+// Toggle navigation menu
+document.querySelector('.nav-toggle').addEventListener('click', function () {
+  const navMenu = document.querySelector('.nav-menu');
   navMenu.classList.toggle('active');
-  navToggle.setAttribute(
-    'aria-expanded',
-    navToggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
-  );
+
+  const isExpanded = this.getAttribute('aria-expanded') === 'true';
+  this.setAttribute('aria-expanded', !isExpanded);
 });
-const initSliders = () => {
-    const sliders = document.querySelectorAll('.project-image-slider');
-  
-    sliders.forEach(slider => {
-      let currentIndex = 0;
-      const images = slider.querySelectorAll('img');
-      const totalImages = images.length;
-  
-      const showImage = (index) => {
-        images.forEach((img, i) => {
-          img.style.display = i === index ? 'block' : 'none';
-        });
-      };
-  
-      slider.querySelector('.prev').addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-        showImage(currentIndex);
+
+// Initialize sliders for project cards
+function setupSliders() {
+  const sliders = document.querySelectorAll('.project-image-slider');
+
+  sliders.forEach(slider => {
+    const images = slider.querySelectorAll('img');
+    let currentIndex = 0;
+
+    function updateImage(index) {
+      images.forEach((img, i) => {
+        img.style.display = i === index ? 'block' : 'none';
       });
-  
-      slider.querySelector('.next').addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % totalImages;
-        showImage(currentIndex);
-      });
-  
-      showImage(currentIndex); 
+    }
+
+    slider.querySelector('.prev').addEventListener('click', function () {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateImage(currentIndex);
     });
-  };
-  
-  const createProjectCard = (project) => {
-    const card = document.createElement('article');
-    card.className = 'project-card';
-    card.setAttribute('aria-labelledby', `project-${project.id}`);
-  
-    card.innerHTML = `<div class="project-image-slider">
-        <button class="prev" aria-label="Previous Image">❮</button>
-        <div class="images">
-          ${project.images
-            .map((image) => `<img src="${image}" alt="${project.title} image">`)
-            .join('')}
-        </div>
-        <button class="next" aria-label="Next Image">❯</button>
-      </div>
-      <div class="project-content">
-        <h3 id="project-${project.id}">${project.title}</h3>
-        <p>${project.description}</p>
-        <div class="project-tags">
-          ${project.tags.map((tag) => `<span class="tag">${tag}</span>`).join('')}
-        </div>
-      </div>
-    `;
-  
-    return card;
-  };
-  
-  const initSlider = () => {
-    const sliders = document.querySelectorAll('.project-image-slider');
-  
-    sliders.forEach((slider) => {
-      let currentIndex = 0;
-      const images = slider.querySelectorAll('img');
-      const totalImages = images.length;
-  
-      const showImage = (index) => {
-        images.forEach((img, i) => {
-          img.style.display = i === index ? 'block' : 'none';
-        });
-      };
-  
-      slider.querySelector('.prev').addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-        showImage(currentIndex);
-      });
-  
-      slider.querySelector('.next').addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % totalImages;
-        showImage(currentIndex);
-      });
-  
-      showImage(currentIndex); 
+
+    slider.querySelector('.next').addEventListener('click', function () {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateImage(currentIndex);
     });
-  };
-  
-  document.addEventListener('DOMContentLoaded', () => {
-    loadProjects().then(initSlider); 
+
+    updateImage(currentIndex); // Show the first image initially
   });
-  
-const loadProjects = async () => {
+}
+
+// Create a single project card
+function createProjectCard(project) {
+  const card = document.createElement('article');
+  card.className = 'project-card';
+
+  const imagesHtml = project.images
+    .map(image => `<img src="${image}" alt="${project.title}">`)
+    .join('');
+
+  const tagsHtml = project.tags
+    .map(tag => `<span class="tag">${tag}</span>`)
+    .join('');
+
+  card.innerHTML = `
+    <div class="project-image-slider">
+      <button class="prev" aria-label="Previous Image">❮</button>
+      <div class="images">${imagesHtml}</div>
+      <button class="next" aria-label="Next Image">❯</button>
+    </div>
+    <div class="project-content">
+      <h3>${project.title}</h3>
+      <p>${project.description}</p>
+      <div class="project-tags">${tagsHtml}</div>
+    </div>
+  `;
+
+  return card;
+}
+
+// Load project data and display cards
+async function loadProjects() {
   const projectsGrid = document.querySelector('.projects-grid');
   const loadingSpinner = document.querySelector('.loading-spinner');
 
+  loadingSpinner.style.display = 'block';
+
   try {
-    loadingSpinner.style.display = 'block';
-
     const response = await fetch('projects.json');
-    if (!response.ok) throw new Error('Failed to fetch projects data.');
+    if (!response.ok) throw new Error('Failed to fetch projects.');
 
-    const projectsData = await response.json();
-
+    const projects = await response.json();
     loadingSpinner.style.display = 'none';
-    projectsData.forEach(project => {
+
+    projects.forEach(project => {
       const card = createProjectCard(project);
       projectsGrid.appendChild(card);
     });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = 'fadeInUp 0.5s ease-out forwards';
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.project-card').forEach(card => {
-      observer.observe(card);
-    });
+    setupSliders(); // Initialize sliders after adding cards
   } catch (error) {
     console.error('Error loading projects:', error);
     loadingSpinner.style.display = 'none';
-    projectsGrid.innerHTML = `<p class="error-message">
-        Failed to load projects. Please try again later.
-      </p>`;
+    projectsGrid.innerHTML = `<p class="error-message">Failed to load projects. Please try again later.</p>`;
   }
-};
+}
 
+// Enable smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
+  anchor.addEventListener('click', function (event) {
+    event.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     target.scrollIntoView({ behavior: 'smooth' });
   });
 });
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-  event.preventDefault();  
-  const name = document.getElementById('name').value; 
-  alert('Your form has been submitted successfully, ' + name + '!');
+
+// Handle contact form submission
+document.getElementById('contactForm').addEventListener('submit', function (event) {
+  event.preventDefault();
+  const name = document.getElementById('name').value;
+  alert(`Your form has been submitted successfully, ${name}!`);
   this.reset();
 });
+
+// Initialize the app when the page loads
+document.addEventListener('DOMContentLoaded', function () {
+  loadProjects();
+});
+
+

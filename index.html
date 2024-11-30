@@ -10,7 +10,8 @@
 <body>
  <header>
  <nav class="navbar">
- <div class="logo" aria-label="Home">My Portfolio</div>
+  <a href="#projects" class="logo" aria-label="Home">My Portfolio</a>
+
  <button class="nav-toggle" aria-label="Toggle navigation">
  <span class="hamburger"></span>
  </button>
@@ -22,23 +23,24 @@
  </ul>
  </nav>
  </header>
-
  <main>
-    <section id="home" class="hero">
-    <div class="hero-content">
-    <h1 id="heading1"> Design. Develop. Deliver.</h1>
-    <p>Front-End Web Developer</p>
-    <a href="https://drive.google.com/file/d/1ckFlJHTt7QKpvvZzPJVDenaGncsZ2MSu/view?usp=drive_link" class="print-resume-btn" target="_blank">
-      <i class="fas fa-print"></i> Print Resume
-    </a>
-  
+  <section id="home" class="hero">
+    <div class="hero-video-wrapper">
+      <video class="video" src="./Neon Pink And Black Futuristic Artificial Intelligence Automation Video.mp4" autoplay loop muted>
+        Your browser does not support the video tag.
+      </video>
     </div>
-    </section>
+
+    <!-- Button to redirect to the Google Drive link for downloading the resume -->
+    <a href="https://drive.google.com/file/d/1ckFlJHTt7QKpvvZzPJVDenaGncsZ2MSu/view?usp=sharing" class="print-resume-btn" target="_blank" aria-label="Download Resume">
+      <i class="fas fa-download"></i> My Resume
+    </a>
+  </section>
     <div class="project-image-slider">
       <button class="prev">❮</button>
       <div class="imagesprofile">
-        <img src="https://i.postimg.cc/mgF7BY3n/img5.png " alt="Image 1">
-        <img src="https://i.postimg.cc/KjrsqXjn/img23.png" alt="Image 2">
+        <img src="https://i.postimg.cc/6332shkb/Black-And-Blue-Bold-Desktop-Wallpaper.png" alt="Image 1">
+        <img src="https://i.postimg.cc/DyqM4QNM/Gray-and-Blue-Modern-Futuristic-Robot-Mouse-Pad.png" alt="Image 2">
       </div>
       <button class="next">❯</button>
     </div>
