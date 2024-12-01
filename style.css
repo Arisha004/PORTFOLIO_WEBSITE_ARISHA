@@ -116,16 +116,17 @@ body {
   .video {
     width: 100%;
     margin-top: 6rem;
+    object-fit: contain;
     margin-bottom: 0px; 
   }
 
   .print-resume-btn {
     font-size: 1rem;
     bottom: 6.5rem;
-    padding: 0.6rem 1rem;
+    bottom:2rem !important;
+    padding: 0.6rem 1rem !important;
   }
 }
-
 @media (max-width: 1024px) {
   .hero {
     height: 50vh;
