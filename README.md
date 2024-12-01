@@ -37,12 +37,12 @@ To get started with the project, follow these simple steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Arisha004/portfolio.git
+   git clone https://github.com/Arisha004/PORTFOLIO_WEBSITE_ARISHA.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd portfolio
+   cd PORTFOLIO_WEBSITE_ARISHA
    ```
 
 3. Open the `index.html` file in your browser to view the website.
@@ -54,7 +54,7 @@ To get started with the project, follow these simple steps:
 Here is a brief overview of the files in the project:
 
 ```
-/portfolio
+/PORTFOLIO_WEBSITE_ARISHA
     /index.html            # The main HTML file of the website
     /style.css             # The CSS file for styling the website
     /script.js             # JavaScript for interactive elements
