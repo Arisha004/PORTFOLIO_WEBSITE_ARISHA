@@ -90,6 +90,10 @@ async function loadProjects() {
     projectsGrid.innerHTML = `<p class="error-message">Failed to load projects. Please try again later.</p>`;
   }
 }
+document.addEventListener("DOMContentLoaded", function() {
+  const video = document.querySelector('.video');
+  video.src = './Neon Pink And Black Futuristic Artificial Intelligence Automation Video.mp4';
+});
 
 // Enable smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
