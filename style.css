@@ -483,9 +483,9 @@ footer {
     min-width: 250px;
   }
   
-  .footer-about h3,
-  .footer-links h3,
-  .footer-contact h3 {
+  .footer-about .heading,
+  .footer-links .heading,
+  .footer-contact .heading {
     font-size: 1.2rem;
     margin-bottom: 10px;
     color: black;
@@ -600,6 +600,7 @@ footer {
    
     
    }
+   
    /* Custom alert styling */
 .custom-alert {
   display: none;  /* Hidden by default */
@@ -690,7 +691,9 @@ body.dark-mode .btn {
   background-color: black;
   color: white;
 }
-
+body.dark-mode .heading{
+  color: white;
+}
 body.dark-mode .footer-wrapper {
   border-top: 1px solid #555;
 }
@@ -702,7 +705,7 @@ body.dark-mode .footer-social a {
   color: white;
 }
 
-body.dark-mode .footer-links a,.footer-links h3 {
+body.dark-mode .footer-links a{
   color: white;
 }
 body.dark-mode #heading{
