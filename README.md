@@ -21,6 +21,8 @@ This portfolio website is a responsive, single-page application designed to show
 - *Responsive Design*: The website is mobile-friendly and looks great on all devices.
 - *Interactive Sections*: Includes interactive sections like a resume button and links to projects.
 - *Professional Appearance*: Clean layout and modern design to make a strong impression.
+- *Dark Mode Toggle*: Users can switch between dark mode and light mode, with their preference saved in the browser.
+- *Image Sliders*: Each project card has an interactive image slider to showcase multiple project images.
 
 ## Technologies Used
 
@@ -68,7 +70,11 @@ This file contains the main structure of the website, including the header, cont
 Contains all the styles and media queries to make the website responsive and visually appealing.
 
 ### JavaScript File (`script.js`):
-Manages the functionality, such as button clicks, and provides interactivity.
+Manages the functionality, such as button clicks, and provides interactivity. Key features include:
+- **Toggle Navigation Menu**: The navigation menu can be toggled open or closed by clicking the toggle button.
+- **Project Sliders**: Each project card contains an interactive image slider that users can navigate using previous and next buttons.
+- **Smooth Scrolling**: Clicking on anchor links scrolls smoothly to the targeted section of the page.
+- **Dark Mode Toggle**: Users can switch between dark and light modes, with the preference saved in `localStorage` for future visits.
 
 ### JSON File (`data.json`):
 Stores data for different sections (e.g., project details, skills, etc.) in a structured format that can be dynamically loaded and displayed on the website.
@@ -81,6 +87,9 @@ I have used PostImage for free image hosting to reduce file sizes, which is a mo
 - *Portfolio Section*: Showcases your skills, projects, and contact information.
 - *Responsive Design*: Uses media queries to ensure the website looks good on all devices.
 - *Footer*: Contains a copyright statement and other relevant links.
+- *Navigation Menu Toggle*: Allows users to toggle the visibility of the navigation menu.
+- *Image Sliders*: Each project card features an interactive image slider to display project images.
+- *Dark Mode Toggle*: Enables users to switch between light and dark modes, with their preference saved in localStorage.
 
 ## Future Enhancements
 
