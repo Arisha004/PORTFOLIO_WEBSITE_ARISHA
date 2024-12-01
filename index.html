@@ -21,6 +21,10 @@
  <li><a href="#about">About</a></li>
  <li><a href="#contact">Contact</a></li>
  </ul>
+ <button id="darkModeToggle" aria-label="Toggle dark mode">
+  <i class="fas fa-moon"></i>
+    </button>
+  
  </nav>
  </header>
  <main>
@@ -88,10 +92,17 @@
     </div>
   </section>
 
+<!-- Custom Alert -->
+<div id="customAlert" class="custom-alert">
+  <p id="alertMessage"></p>
+  <button onclick="closeAlert()">Close</button>
+</div>
+
+
 </section>
  </main>
 
- <footer>
+ <footer class="footer">
     <div class="footer-wrapper">
       <div class="footer-about">
         <h3>About Me</h3>

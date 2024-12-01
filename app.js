@@ -100,17 +100,52 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Handle contact form submission
-document.getElementById('contactForm').addEventListener('submit', function (event) {
-  event.preventDefault();
-  const name = document.getElementById('name').value;
-  alert(`Your form has been submitted successfully, ${name}!`);
-  this.reset();
-});
 
 // Initialize the app when the page loads
 document.addEventListener('DOMContentLoaded', function () {
   loadProjects();
 });
+document.getElementById('contactForm').addEventListener('submit', function (event) {
+  event.preventDefault();  // Prevent the form from submitting
+
+  const name = document.getElementById('name').value;  // Get the name from the form
+  const message = `Your form has been submitted successfully, ${name}!`;
+
+  // Show the custom alert and display the message
+  document.getElementById('alertMessage').textContent = message;
+  document.getElementById('customAlert').style.display = 'block';
+
+  // reset the form
+  this.reset();
+});
+
+// Close the alert when the button is clicked
+function closeAlert() {
+  document.getElementById('customAlert').style.display = 'none';
+}
+// Get the toggle button
+const darkModeToggle = document.getElementById('darkModeToggle');
+
+// Check if dark mode preference is already saved in localStorage
+const darkModePreference = localStorage.getItem('darkMode');
+
+// Apply dark mode if preference is saved
+if (darkModePreference === 'enabled') {
+  document.body.classList.add('dark-mode');
+}
+
+// Add event listener to toggle dark mode
+darkModeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  
+  // Save the dark mode preference in localStorage
+  if (document.body.classList.contains('dark-mode')) {
+    localStorage.setItem('darkMode', 'enabled');
+  } else {
+    localStorage.setItem('darkMode', 'disabled');
+  }
+});
+
+
 
 
