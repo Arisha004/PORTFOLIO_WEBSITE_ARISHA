@@ -60,7 +60,7 @@ Here is a brief overview of the files in the project:
     /index.html            # The main HTML file of the website
     /style.css             # The CSS file for styling the website
     /script.js             # JavaScript for interactive elements
-    /data.json             # JSON file used for managing data
+    /projects.json             # JSON file used for managing data
 ```
 
 ### HTML File (`index.html`):
@@ -76,8 +76,8 @@ Manages the functionality, such as button clicks, and provides interactivity. Ke
 - **Smooth Scrolling**: Clicking on anchor links scrolls smoothly to the targeted section of the page.
 - **Dark Mode Toggle**: Users can switch between dark and light modes, with the preference saved in `localStorage` for future visits.
 
-### JSON File (`data.json`):
-Stores data for different sections (e.g., project details, skills, etc.) in a structured format that can be dynamically loaded and displayed on the website.
+### JSON File (`projects.json`):
+Stores data for different sections (e.g., project details,tags etc.) in a structured format that can be dynamically loaded and displayed on the website.
 
 I have used PostImage for free image hosting to reduce file sizes, which is a more efficient approach for faster website loading and better performance.
 
