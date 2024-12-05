@@ -97,7 +97,7 @@ I have used PostImage for free image hosting to reduce file sizes, which is a mo
 - Improve the performance and accessibility of the website by optimizing images and ensuring better keyboard navigation.
 
 ## Acknowledgements
-I would like to thank [W3Schools, Mozilla Developer Network (MDN), and freeCodeCamp for their comprehensive tutorials and documentation on HTML, CSS, JavaScript, and JSON. Special thanks to Stack Overflow for the community support and solutions to coding challenges.
+I would like to thank [W3Schools, Mozilla Developer Network (MDN), and freeCodeCamp for their comprehensive tutorials and documentation on HTML, CSS, JavaScript, and JSON.
 - Special thanks to Devsinz for providing me with the opportunity to showcase my skills through this project.
 
 ## References
